@@ -2,7 +2,7 @@ import pygame
 import sys
 
 class Display:
-    def __init__(self, grid_size=(8, 8), cell_size=8):
+    def __init__(self, grid_size=(8, 8), cell_size=8, font="fonts/c64.ttf", fontSize=16, title="EmuDisplay"):
         pygame.init()
         self.GRID_SIZE = grid_size
         self.CELL_SIZE = cell_size
@@ -34,12 +34,14 @@ class Display:
         self.current_bg_color = self.COLORS['BLUE']
         
         self.screen = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
-        pygame.display.set_caption("EmuDisplay")
+        pygame.display.set_caption(title)
         self.clock = pygame.time.Clock()
         self.grid = [[' ' for _ in range(self.GRID_SIZE[0])] for _ in range(self.GRID_SIZE[1])]
         self.emulation_running = True
         self.paused = False
-        self.unicode_font = pygame.font.Font("fonts/c64.ttf", 16)
+        self.font = font
+        self.fontSize = fontSize
+        self.unicode_font = pygame.font.Font(self.font, self.fontSize)
 
     def set_char_in_cell(self, row, col, char):
         if 0 <= row < self.GRID_SIZE[1] and 0 <= col < self.GRID_SIZE[0]:

@@ -24,7 +24,7 @@ def program(display):
     renderText(display, 9, "It just works!")
 
 if __name__ == "__main__":
-    display = Display(grid_size=(40, 24), cell_size=15)
+    display = Display(grid_size=(40, 24), cell_size=16, font="fonts/c64.ttf", fontSize=16, title="EmuDisplay")
     display.current_bg_color = display.COLORS["BLACK"]
     display.current_fg_color = display.COLORS["WHITE"]
     display.start_time = time.time()  # Record the program start time
